@@ -1,0 +1,16 @@
+parameters:
+    kernel.data_dir: "%kernel.root_dir%/var/data"
+
+framework:
+    secret: secret
+    test: ~
+    router:
+        resource: "@TestBundle/Controller/"
+        type: annotation
+
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        path: "%kernel.data_dir%/data.sqlite"
+    orm:
+        auto_mapping: true

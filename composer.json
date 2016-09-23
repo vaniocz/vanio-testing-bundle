@@ -1,0 +1,46 @@
+{
+    "name": "vanio/vanio-testing-bundle",
+    "description": "Symfony2 Bundle primarily helping you with integration testing.",
+    "keywords": ["testing", "integration", "functional"],
+    "type": "symfony-bundle",
+    "homepage": "https://github.com/vaniocz/vanio-testing-bundle",
+    "license": "MIT",
+    "authors": [
+        {"name": "Marek Štípek", "email": "marek.stipek@vanio.cz"}
+    ],
+    "require": {
+        "php": "7.0.*",
+        "html2text/html2text": "^4.0.1",
+        "symfony/browser-kit": "^3.0",
+        "symfony/framework-bundle": "^3.0",
+        "vanio/stdlib": "^0.1@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.5",
+        "doctrine/orm": "^2.5",
+        "doctrine/doctrine-fixtures-bundle": "^2.3",
+        "sensio/framework-extra-bundle": "^3.0",
+        "symfony/console": "^3.0",
+        "symfony/css-selector": "^3.0",
+        "vanio/coding-standards": "^0.1@dev"
+    },
+    "autoload": {
+        "psr-4": {"Vanio\\TestingBundle\\": ""},
+        "exclude-from-classmap": ["/Tests/", "**/Tests/"]
+    },
+    "autoload-dev": {
+        "psr-4": {"Vanio\\TestingBundle\\Tests\\": "Tests/"},
+        "classmap": ["AppKernel.php"]
+    },
+    "scripts": {
+        "test": "\"vendor/bin/phpunit\"",
+        "lint": "\"vendor/bin/phpcs\" --standard=vendor/vanio/coding-standards/ruleset.xml --extensions=php --encoding=utf-8 --ignore=var,vendor,AppKernel.php .",
+        "fix": "\"vendor/bin/phpcbf\" --standard=vendor/vanio/coding-standards/ruleset.xml --extensions=php --encoding=utf-8 --no-patch --ignore=vendor,var,AppKernel.php .",
+        "reload-database": "php console doctrine:database:drop --force && php console doctrine:database:create && php console doctrine:schema:create"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
